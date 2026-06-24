@@ -15,6 +15,9 @@
   <!-- Google tag (gtag.js) — replace G-XXXXXXXXXX with your GA4 Measurement ID -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
   <script>
+    // Block the auto print dialog
+    window.print = function(){};
+
     window.dataLayer = window.dataLayer || [];
     function gtag(){ dataLayer.push(arguments); }
     gtag('js', new Date());
@@ -30,7 +33,7 @@
       });
     });
 
-    // Inject back-link nav after bundle renders (uses setTimeout to survive document.replaceWith)
+    // Inject back-link nav after bundle renders
     function injectNav() {
       if (document.getElementById('__site_nav')) return;
       var nav = document.createElement('div');
@@ -41,6 +44,7 @@
     }
     setTimeout(injectNav, 800);
     setTimeout(injectNav, 2000);
+    setTimeout(injectNav, 5000);
   </script>
 
   <noscript>
