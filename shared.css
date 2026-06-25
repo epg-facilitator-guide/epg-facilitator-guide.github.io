@@ -1,0 +1,237 @@
+/* ============================================================
+   SET ePG one-pager — shared styles
+   Built on RockED design tokens, with Southeast Toyota red as
+   the lead brand color and RockED purple as a supporting accent.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Lato:wght@300;400;700;900&display=swap');
+
+:root {
+  /* RockED tokens (subset) */
+  --rk-brand-50:  #F4F3FF;
+  --rk-brand-100: #EBE9FE;
+  --rk-brand-200: #D9D6FE;
+  --rk-brand-600: #622FEE;
+  --rk-brand-700: #5925DC;
+
+  --rk-neutral-50:  #F9FAFB;
+  --rk-neutral-100: #F2F4F7;
+  --rk-neutral-200: #E4E7EC;
+  --rk-neutral-300: #D0D5DD;
+  --rk-neutral-400: #98A2B3;
+  --rk-neutral-500: #667085;
+  --rk-neutral-600: #475467;
+  --rk-neutral-700: #344054;
+  --rk-neutral-800: #1D2939;
+  --rk-neutral-900: #10182B;
+
+  --rk-success-50:  #ECFDF3;
+  --rk-success-600: #039855;
+  --rk-warn-50:     #FFFAEB;
+  --rk-warn-300:    #FEC84B;
+  --rk-warn-700:    #B54708;
+
+  /* Southeast Toyota red — sampled from the SET logo */
+  --set-red-700:  #9B1B22;
+  --set-red-600:  #C8102E; /* primary */
+  --set-red-500:  #E03A4C;
+  --set-red-50:   #FDECEE;
+  --set-black:    #0E0E0E;
+
+  --rk-shadow-sm: 0 1px 3px rgba(16, 24, 40, 0.06), 0 1px 2px rgba(16, 24, 40, 0.04);
+  --rk-shadow-md: 0 4px 8px -2px rgba(16, 24, 40, 0.06), 0 2px 4px -2px rgba(16, 24, 40, 0.04);
+  --rk-shadow-lg: 0 12px 16px -4px rgba(16, 24, 40, 0.06), 0 4px 6px -2px rgba(16, 24, 40, 0.03);
+
+  --font-display: 'Montserrat', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-body:    'Lato', 'Montserrat', system-ui, -apple-system, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-body);
+  color: var(--rk-neutral-700);
+  background: var(--rk-neutral-100);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ----- Page (US Letter portrait, 8.5 x 11 in) ----- */
+.page {
+  width: 8.5in;
+  min-height: 11in;
+  margin: 24px auto;
+  background: #fff;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 12px 40px rgba(16, 24, 40, 0.10);
+  display: flex;
+  flex-direction: column;
+}
+
+@media print {
+  @page { size: letter portrait; margin: 0; }
+  html, body { background: #fff; }
+  .page { margin: 0; box-shadow: none; page-break-after: always; }
+  .page:last-child { page-break-after: auto; }
+  .no-print { display: none !important; }
+}
+
+/* ----- Type helpers ----- */
+.font-display { font-family: var(--font-display); }
+.font-body    { font-family: var(--font-body); }
+
+.eyebrow {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--set-red-600);
+}
+
+.eyebrow.purple { color: var(--rk-brand-600); }
+.eyebrow.white  { color: rgba(255,255,255,0.85); }
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  color: var(--rk-neutral-900);
+  margin: 0;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+
+p { margin: 0; text-wrap: pretty; }
+
+/* ----- Co-brand bar (top of every page) ----- */
+.brandbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.45in 0.55in;
+  border-bottom: 1px solid var(--rk-neutral-200);
+  background: #fff;
+}
+.brandbar .set-logo { height: 38px; }
+.brandbar .rk-logo  { height: 28px; opacity: 0.95; }
+.brandbar .divider {
+  width: 1px;
+  height: 38px;
+  background: var(--rk-neutral-200);
+  margin: 0 18px;
+}
+.brandbar .right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.brandbar .partnership-tag {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--rk-neutral-500);
+}
+
+/* ----- Footer (bottom of every page) ----- */
+.footer {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.28in 0.55in;
+  border-top: 1px solid var(--rk-neutral-200);
+  font-family: var(--font-display);
+  font-size: 10px;
+  color: var(--rk-neutral-500);
+  background: var(--rk-neutral-50);
+}
+.footer .tagline {
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--rk-neutral-700);
+}
+.footer .tagline .dot {
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  background: var(--set-red-600);
+  border-radius: 50%;
+  margin: 0 8px;
+  vertical-align: 3px;
+}
+
+/* ----- Generic card ----- */
+.card {
+  background: #fff;
+  border: 1px solid var(--rk-neutral-200);
+  border-radius: 14px;
+  box-shadow: var(--rk-shadow-sm);
+}
+
+/* ----- Phone frame for screenshots ----- */
+.phone {
+  width: 100%;
+  aspect-ratio: 460 / 998;
+  border-radius: 22px;
+  background: #000;
+  padding: 6px;
+  box-shadow: 0 18px 40px -12px rgba(16, 24, 40, 0.22), 0 4px 10px rgba(16,24,40,0.08);
+  position: relative;
+}
+.phone img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 16px;
+}
+
+/* ----- Step number badge ----- */
+.step-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 999px;
+  background: var(--set-red-600);
+  color: #fff;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0;
+  flex-shrink: 0;
+}
+
+.step-num.purple { background: var(--rk-brand-600); }
+.step-num.outline {
+  background: #fff;
+  color: var(--set-red-600);
+  border: 2px solid var(--set-red-600);
+}
+
+/* ----- Pill / chip ----- */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  background: var(--rk-neutral-100);
+  color: var(--rk-neutral-700);
+}
+.chip.red    { background: var(--set-red-50);   color: var(--set-red-700); }
+.chip.purple { background: var(--rk-brand-50);  color: var(--rk-brand-600); }
+.chip.amber  { background: var(--rk-warn-50);   color: var(--rk-warn-700); }
+.chip.green  { background: var(--rk-success-50); color: var(--rk-success-600); }
+
+/* SR-only utility */
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); }
